@@ -1,119 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ammar Sadiq</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton%7CBaskervville%7CRaleway&display=swap">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 </head>
+
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+        <div id="logo">
+            <a href="#home">
+                <img src="./media/Logo-1.png" alt="Logo">
+            </a>
+        </div>
+        <nav id="navbar">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#intro" class="nav-link">Introduction</a>
+            <a href="#career" class="nav-link">Career</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#trainings" class="nav-link">Trainings</a>
         </nav>
     </header>
 
-    <section id="hero">
-        <h1>Ammar S.</h1>
-        <p>Electrical Engineer - Embedded Systems Specialist</p>
-        <a href="#contact" class="cta">Get in Touch</a>
-    </section>
+    <main>
+        <section id="home">
+            <div class="hero">
+                <img id="hero-img" src="./media/Ammar_S-1.jpg" alt="Hero">
+                <h1>Ammar Sadiq</h1>
+                <h2>Embedded System Engineer | Web Developer | ML Enthusiast</h2>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/muhammad-ammar-sadiq/" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/AmmarSadiq1" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://codepen.io/AmmarSadiq" target="_blank">
+                    <i class="fab fa-codepen"></i>
+                </a>
+            </div>
+        </section>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I am an electrical engineer specializing in embedded systems with over a year of experience...</p>
-    </section>
+        <section id="intro" class="section-container">
+            <h2 id="intro-heading" class="sections-heading">Who am I?</h2>
+            <div id="intro-content" class="content-container">
+                <p>
+                    I am an electrical engineer specializing in embedded systems. Solution-Driven, 
+                    Dynamic, and Results-Oriented person with 1.5+ years of experience managing complex,
+                    real-time and safety-critical embedded systems projects in Robotics, IoT, and Energy/Power
+                    industries. I find fun in employing silicon (μChips) to develop solutions. With the knowledge
+                    foundation of electrical engineering and 5+ years of programming experience, along with the curious
+                    nature of finding the crux of the problem, I’m adept in cracking whatever challenge you through on
+                    me to create, design and build the optimal solutions.
+                </p>
+            </div>
+        </section>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>C/C++</li>
-            <li>Embedded Systems</li>
-            <li>Microcontrollers</li>
-            <li>PCB Design</li>
-        </ul>
-    </section>
+        <section id="career" class="section-container">
+            <h2 id="career-heading" class="sections-heading">Career</h2>
+            <div id="career-content" class="content-container">
+                <ul class="job-sessions">
+                    <li>
+                        <h3 class="job-time">November 2023 - Current</h3>
+                        <h4 class="job-title">Embedded System Engineer, PowerSoft19</h4>
+                        <p class="job-description">
+                            Working on 200kW Multi-port EV Charger's FW using Zynq7000 SoCs.
+                        </p>
+                    </li>
+                    <li>
+                        <h3 class="job-time">April 2023 - October 2023</h3>
+                        <h4 class="job-title">Assistant Manager Electronics Design, FARIS</h4>
+                        <p class="job-description">
+                            As a fresh grad, I applied my knowledge and got experience in following domains:<br/>
+                            - UAV Flight Control System based on Open Source ArduPilot project <br/>
+                            - Integrating different modules in a system <br/>
+                            - Designing Printed Circuit Board in Altium designer <br/>
+                            - Writing Firmware for STM32 µControllers <br/>
+                            - Custom devices for testing and verifying the system's submodules
+                        </p>
+                    </li>
+                    <li>
+                        <h3 class="job-time">June 2022 - August 2022</h3>
+                        <h4 class="job-title">Embedded System Intern, PTPRI</h4>
+                        <p class="job-description">
+                            Took part in ongoing research on clean energy through fusion in "Pakistan Tokamak and Plasma Research Institute(PTPRI)". Being a research intern, I worked on: <br/>
+                            - Supercapacitor parameters identification via MATLAB <br/>
+                            - Implementation of Control System for Capacitor Bank based Power supply for Tokamak inductive coils
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </section>
 
-    <section id="experience">
-        <h2>Experience</h2>
-        <div class="job">
-            <h3>Embedded Systems Engineer</h3>
-            <h4>Venturetronics, Nov 2023 - Present</h4>
-            <p>Responsibilities and achievements...</p>
-        </div>
-        <div class="job">
-            <h3>Assitant Manager Electronics Design</h3>
-            <h4>P.O.F, April 2023 - Oct 2023</h4>
-            <p>Responsibilities and achievements...</p>
-        </div>
-        <div class="job">
-            <h3>Intern</h3>
-            <h4>PTPRI, Jun 2022 - Aug 2022</h4>
-            <p>Responsibilities and achievements...</p>
-        </div>
-    </section>
+        <section id="projects" class="section-container">
+            <h2 id="projects-heading" class="sections-heading">Projects</h2>
+            <div class="project-content content-container card-container">
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>Project Title</h3>
-            <p>Description of the project...</p>
-            <p><strong>Technologies Used:</strong> Technology1, Technology2</p>
-            <a href="#">View on GitHub</a>
-        </div>
-        <div class="project">
-            <h3>Project Title</h3>
-            <p>Description of the project...</p>
-            <p><strong>Technologies Used:</strong> Technology1, Technology2</p>
-            <a href="#">View on GitHub</a>
-        </div>
-    </section>
+                <article>
+                    <div class="article-card">
+                        <figure>
+                            <img src="./media/Project-A.jpg" alt="Project-A photo" />
+                        </figure>
+                        <div class="article-body">
+                            <h3>Tribute Page</h3>
+                            <p>
+                                A webpage to pay trbute to Nikola Tesla
+                            </p>
+                            <a href="https://codepen.io/AmmarSadiq/pen/xbKKMGj" target="_blank" class="read-more">
+                                <span>View Project <span class="sr-only">on Codepen</span></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
 
-    <section id="education">
-        <h2>Education</h2>
-        <div class="education">
-            <h3>Bachelor of Science in Electrical Engineering</h3>
-            <h4>Pakistan Institte of Engineering and Applied Scineces(PIEAS), 2023</h4>
-            <p>Relevant coursework and achievements...</p>
-        </div>
-    </section>
+                <article>
+                    <div class="article-card">
+                        <figure>
+                            <img src="./media/Project-B-2.jpg" alt="" />
+                        </figure>
+                        <div class="article-body">
+                            <h3>Technical Documentation Page</h3>
+                            <p>
+                                A webpage hosting documentation for basics of Web.
+                            </p>
+                            <a href="https://codepen.io/AmmarSadiq/pen/PwYYVNY" target="_blank" class="read-more">
+                                <span>View Project <span class="sr-only">on Codepen</span></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
 
-    <section id="certifications">
-        <h2>Certifications</h2>
-        <div class="certification">
-            <h3>Certification Title</h3>
-            <h4>Issuing Organization, 2022</h4>
-        </div>
-    </section>
+                <article>
+                    <div class="article-card">
+                        <figure>
+                            <img src="./media/Project-C-0.jpg" alt="Project-C photo" />
+                        </figure>
+                        <div class="article-body">
+                            <h3>Product Landing Page</h3>
+                            <p>
+                                A simple product landing page.
+                            </p>
+                            <a href="https://codepen.io/AmmarSadiq/pen/zxOOeqR" target="_blank" class="read-more">
+                                <span>View Project <span class="sr-only">on Codepen</span></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </section>
+            </div>
+
+            <div>
+                View more projects on <a href="https://codepen.io/AmmarSadiq" class="" target="_blank"><b>Codepen</b></a>
+            </div>
+        </section>
+
+
+        <section id="trainings" class="section-container">
+            <h2 id="trainings-heading" class="sections-heading">Trainings</h2>
+            <div class="Trainings content-container card-container">
+
+                <article>
+                    <div class="article-card">
+                        <figure>
+                            <img src="./media/C-Programming-Specialization-Certificate-COURSERA-compressed.jpg" alt="" />
+                        </figure>
+                        <div class="article-body">
+                            <h3>C Programming with Linux (Specialization)</h3>
+                            <p>
+                                Provides the skills to write, read and debug computer programs in the C programming language. It also teaches the fundamentals of Linux operating system.
+                            </p>
+                            <a href="https://coursera.org/share/fbc89402fb8f13a79a5bf07d30b3fd1a" class="read-more" target="_blank">
+                                <span>View Certificate <span class="sr-only">on Coursera</span></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+               
+                <article>
+                    <div class="article-card">
+                        <figure>
+                            <img src="./media/ARM-CortexM-Specialization-Certificate-COURSERA-compressed.jpg" alt="" />
+                        </figure>
+                        <div class="article-body">
+                            <h3>Arm Cortex-M Architecture and Software Development (Specialization)</h3>
+                            <p>
+                                Provides the necessary skills for development of software for Arm Cortex-M processors.
+                            </p>
+                            <a href="https://coursera.org/share/2b70bf4400139caf0dc1e243e547ed47" class="read-more" target="_blank">
+                                <span>View Certificate <span class="sr-only">on Coursera</span></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article>
+                    <div class="article-card">
+                        <figure>
+                            <img src="./media/Python-For-Everybody-Specialization-Certificate-COURSERA-compressed.jpg" alt="" />
+                        </figure>
+                        <div class="article-body">
+                            <h3>Python for Everybody (Specialization)</h3>
+                            <p>
+                                Introduces the fundamental programming concepts including data structures, networked application program interfaces, and databases, using the Python programming language.
+                            </p>
+                            <a href="https://coursera.org/share/38ec03caadb9a5791d8f44d44af0721f" class="read-more" target="_blank">
+                                <span>View Certificate <span class="sr-only">on Coursera</span></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                <article>
+                    <div class="article-card">
+                        <figure>
+                            <img src="./media/RaspberryPi-Projects-Specialization-Certificate-COURSERA-compressed.jpg" alt="" />
+                        </figure>
+                        <div class="article-body">
+                            <h3>Raspberry Pi Projects (Specialization)</h3>
+                            <p>
+                                Teaches building functional prototypes, home projects, and new creations with custom peripheral hardware and a Raspberry Pi.
+                            </p>
+                            <a href="https://coursera.org/share/00a1e6dc49b999ca0d76552ed4f62b5e" class="read-more" target="_blank">
+                                <span>View Certificate <span class="sr-only">on Coursera</span></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                <article>
+                    <div class="article-card">
+                        <figure>
+                            <img src="./media/Supervised-ML-Regression-And-Classification-Course-Certificate-COURSERA-compressed.jpg" alt="" />
+                        </figure>
+                        <div class="article-body">
+                            <h3>Supervised Machine Learning: Regression and Classification (Course)</h3>
+                            <p>
+                                Learned how to apply supervised machine learning to regression and classification tasks.
+                            </p>
+                            <a href="https://coursera.org/share/087b731e517463e990d1c95de3a5fd40" class="read-more" target="_blank">
+                                <span>View Certificate <span class="sr-only">on Coursera</span></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                
+                <article>
+                    <div class="article-card">
+                        <figure>
+                            <img src="./media/Embedded-Software-And-Hardware-Architecture-Course-Certificate-COURSERA-compressed.jpg" alt="" />
+                        </figure>
+                        <div class="article-body">
+                            <h3>Embedded Software and Hardware Architecture (Course)</h3>
+                            <p>
+                                Teaches C-Programming memory interactions on ARM architecture, construction of specialized embedded system data structures, and memory manipulation techniques.
+                            </p>
+                            <a href="https://coursera.org/share/74bdfb5cac26e37042af0740678a91a4" class="read-more" target="_blank">
+                                <span>View Certificate <span class="sr-only">on Coursera</span></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <div>
+                 View more certificates on <a href="https://www.linkedin.com/in/muhammad-ammar-sadiq/details/certifications/" class="" target="_blank"><b>LinkedIn</b></a>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2024 John Doe</p>
-        <ul>
-            <li><a href="#">LinkedIn</a></li>
-            <li><a href="#">GitHub</a></li>
-        </ul>
+        <p>&copy; 2024 Muhammad Ammar Sadiq. All Rights Reserved.</p>
+        <p><a href="#home">Back to Top 🔼<span class="sr-only">Home</span></a></p>
     </footer>
 </body>
+
 </html>
