@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <!-- Background -->
+  <rect width="800" height="800" fill="#131c2e"/>
+  <!-- Shoulder silhouette -->
+  <ellipse cx="400" cy="560" rx="220" ry="160" fill="#1e2d45"/>
+  <!-- Head silhouette -->
+  <circle cx="400" cy="300" r="140" fill="#1e2d45"/>
+  <!-- Initials overlay -->
+  <text x="400" y="320" text-anchor="middle" dominant-baseline="middle"
+        font-family="sans-serif" font-weight="700" font-size="100"
+        fill="#4ecca3" opacity="0.35">AS</text>
+</svg>

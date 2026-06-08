@@ -1,0 +1,103 @@
+/* Font imports */
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/outfit';
+@import '@fontsource/geist-mono/400.css';
+@import '@fontsource/geist-mono/500.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ─── */
+
+/* Dark mode (default) */
+:root {
+  --bg-base:       #070b14;
+  --bg-surface:    #0d1320;
+  --bg-subtle:     #131c2e;
+  --border:        #1e2d45;
+  --text-primary:  #dde4f0;
+  --text-muted:    #7a8fa6;
+  --accent:        #4ecca3;
+  --accent-dim:    #1e7a62;
+  --accent-glow:   rgba(78, 204, 163, 0.15);
+
+  --font-display: 'Bricolage Grotesque Variable', sans-serif;
+  --font-body:    'Outfit Variable', sans-serif;
+  --font-mono:    'Geist Mono', monospace;
+}
+
+/* Light mode */
+html.light {
+  --bg-base:       #f0f4f8;
+  --bg-surface:    #ffffff;
+  --bg-subtle:     #e4eaf2;
+  --border:        #c8d5e3;
+  --text-primary:  #0d1b2a;
+  --text-muted:    #546a7b;
+  --accent:        #1a936f;
+  --accent-dim:    #d0f0e5;
+  --accent-glow:   rgba(26, 147, 111, 0.12);
+}
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.75;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background-color: var(--accent-dim);
+    color: var(--text-primary);
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg-base); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent-dim); }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* Scroll reveal animation */
+@layer utilities {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Active nav link */
+  [data-active="true"] {
+    color: var(--accent) !important;
+    border-bottom-color: var(--accent) !important;
+  }
+}

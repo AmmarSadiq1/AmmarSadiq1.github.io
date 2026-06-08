@@ -1,0 +1,160 @@
+---
+interface Props {
+  navLinks: Array<{ href: string; label: string }>;
+  resumeUrl: string;
+}
+
+const { navLinks, resumeUrl } = Astro.props;
+---
+
+<!-- Hamburger button -->
+<button
+  id="mobile-menu-btn"
+  type="button"
+  aria-label="Open navigation menu"
+  aria-expanded="false"
+  aria-controls="mobile-menu-drawer"
+  class="p-2 rounded-md transition-colors duration-150"
+  style="color: var(--text-muted);"
+>
+  <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="3" y1="6" x2="21" y2="6"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <line x1="3" y1="18" x2="21" y2="18"/>
+  </svg>
+</button>
+
+<!-- Backdrop -->
+<div
+  id="mobile-menu-backdrop"
+  class="fixed inset-0 z-40 hidden"
+  style="background: rgba(7,11,20,0.75);"
+  aria-hidden="true"
+></div>
+
+<!-- Drawer -->
+<nav
+  id="mobile-menu-drawer"
+  aria-label="Mobile navigation"
+  role="dialog"
+  aria-modal="true"
+  class="fixed top-0 right-0 bottom-0 z-50 w-72 flex flex-col"
+  style="background: var(--bg-surface); border-left: 1px solid var(--border); transform: translateX(100%); transition: transform 0.3s ease;"
+>
+  <!-- Drawer header -->
+  <div class="flex items-center justify-between px-6 h-16" style="border-bottom: 1px solid var(--border);">
+    <span class="font-mono text-sm font-semibold tracking-widest uppercase" style="color: var(--accent);">Menu</span>
+    <button
+      id="mobile-menu-close"
+      type="button"
+      aria-label="Close navigation menu"
+      class="p-2 rounded-md transition-colors duration-150"
+      style="color: var(--text-muted);"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Nav links -->
+  <div class="flex flex-col flex-1 px-4 py-6 gap-1">
+    {navLinks.map(link => (
+      <a
+        href={link.href}
+        class="mobile-nav-link py-4 px-4 text-lg font-medium rounded-lg transition-colors duration-150"
+        style="color: var(--text-muted);"
+      >
+        {link.label}
+      </a>
+    ))}
+  </div>
+
+  <!-- Download CV at the bottom -->
+  <div class="px-6 pb-8">
+    <a
+      href={resumeUrl}
+      download
+      class="mobile-nav-link block w-full text-center py-3 rounded-lg text-sm font-semibold transition-all duration-150"
+      style="background: var(--accent); color: var(--bg-base);"
+    >
+      Download CV
+    </a>
+  </div>
+</nav>
+
+<script>
+  function initMobileMenu() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('mobile-menu-close');
+    const drawer = document.getElementById('mobile-menu-drawer');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (!btn || !closeBtn || !drawer || !backdrop) return;
+
+    // Get all focusable elements inside the drawer
+    function getFocusable() {
+      return Array.from(
+        drawer.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])')
+      );
+    }
+
+    function openMenu() {
+      drawer.style.transform = 'translateX(0)';
+      backdrop.classList.remove('hidden');
+      btn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      // Focus first element
+      setTimeout(() => {
+        const focusable = getFocusable();
+        if (focusable.length) (focusable[0] as HTMLElement).focus();
+      }, 50);
+    }
+
+    function closeMenu() {
+      drawer.style.transform = 'translateX(100%)';
+      backdrop.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      btn.focus();
+    }
+
+    btn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    backdrop.addEventListener('click', closeMenu);
+
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+      }
+    });
+
+    // Focus trap
+    drawer.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const focusable = getFocusable();
+      const first = focusable[0] as HTMLElement;
+      const last = focusable[focusable.length - 1] as HTMLElement;
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+
+    // Close on link click
+    mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+  }
+
+  initMobileMenu();
+  document.addEventListener('astro:page-load', initMobileMenu);
+</script>

@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import About from '../components/sections/About.astro';
+import Experience from '../components/sections/Experience.astro';
+import Skills from '../components/sections/Skills.astro';
+import Certifications from '../components/sections/Certifications.astro';
+import Contact from '../components/sections/Contact.astro';
+import { meta } from '../data/portfolio.ts';
+---
+
+<BaseLayout title={`${meta.name} — ${meta.title}`} description={meta.tagline}>
+  <Hero />
+  <About />
+  <Experience />
+  <Skills />
+  <Certifications />
+  <Contact />
+</BaseLayout>
