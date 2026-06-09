@@ -49,15 +49,15 @@ export interface Stat {
 // ─── Meta / Personal ─────────────────────────────────────────
 
 export const meta = {
-  name:        "Muhammad Ammar Sadiq",
-  initials:    "MAS",                    // used for favicon monogram
+  name:        "Ammar.S",
+  initials:    "A.S",                    // used for favicon monogram
   title:       "Embedded & Control Systems Developer",
   tagline:     "Building real-time, safety-critical embedded systems — from power-constrained aerial robots to high-power EV infrastructure.",
   email:       "mammarsadiq2000@gmail.com",
   phone:       "+92 332 7633258",
   location:    "Lahore, Pakistan",
   linkedin:    "https://www.linkedin.com/in/muhammad-ammar-sadiq/",
-  github:      "https://github.com/TODO_YOUR_GITHUB_USERNAME",   // TODO: add your GitHub URL
+  github:      "https://github.com/AmmarSadiq1",
   resumeUrl:   "/assets/resume.pdf",                             // TODO: place your PDF at /public/assets/resume.pdf
   avatarUrl:   "/assets/profile.jpg",                            // TODO: place your photo at /public/assets/profile.jpg
 };
@@ -67,12 +67,7 @@ export const meta = {
 // Written in first-person for a portfolio feel.
 
 export const about = `
-I'm an Embedded and Control Systems Developer with a background in Electrical Engineering
-and over 3 years of hands-on firmware experience. My work spans the full embedded stack —
-from writing bare-metal C on Cortex-M microcontrollers and designing FPGA IP cores in VHDL,
-to architecting safety-critical firmware for 200kW EV charging infrastructure.
-I thrive at the intersection of hardware and software, bringing both rigour and creativity
-to real-time systems where reliability is non-negotiable.
+I'm an Embedded and Control Systems Developer with a background in Electrical Engineering and over 3 years of hands-on firmware experience. My work spans the full embedded stack — from writing bare-metal C on Cortex-M microcontrollers and designing FPGA IP cores in VHDL, to architecting safety-critical firmware for 200kW EV charging infrastructure. I thrive at the intersection of hardware and software, bringing both rigour and creativity to real-time systems where reliability is non-negotiable.
 `;
 
 // ─── Hero Stats ──────────────────────────────────────────────
@@ -82,7 +77,7 @@ export const stats: Stat[] = [
   { value: "3+",   label: "Years of Experience" },
   { value: "13+",  label: "Certifications" },
   { value: "3.59", label: "CGPA — BS Electrical Engineering" },
-  { value: "200kW", label: "EV Charger Firmware Architected" },
+  { value: "400kW", label: "Multiport Converter Firmware" },
 ];
 
 // ─── Experience ──────────────────────────────────────────────
@@ -142,9 +137,9 @@ export const experiences: Experience[] = [
     type:        "project",
     // TODO: Replace the description and bullets below with your actual FYP details.
     //       The CV had a Lorem ipsum placeholder here. The technologies are listed below.
-    description: "TODO: Add your Final Year Project title and one-sentence description here.",
+    description: "Multi-rotor drone-swarm",
     bullets: [
-      "TODO: Add your FYP bullet points here — what problem did you solve, what did you build, what was the outcome?",
+      "Led the development of the multi-rotor drone-swarm. Demonstrated a triangular swarm formation, consisting of three drones, with the leader on front vertex broadcasting it's coordinates, followed by two followers on both flanks, intercepting the leader's co-ordinates and following optimal calculated trajectory to maintain triangular formation.",
     ],
     tech: ["Ardupilot", "Pixhawk", "Raspberry Pi", "nRF24 Radio", "GPS"],
   },
@@ -172,7 +167,7 @@ export const skills: SkillGroup[] = [
     items: ["C", "C++", "Python", "JavaScript", "VHDL", "Verilog"],
   },
   {
-    category: "Microcontrollers & SoCs",
+    category: "MCUs & SoCs",
     icon: "🔌",
     items: ["Zynq-7000 SoC", "STM32 (Cortex-M)", "ESP32", "Raspberry Pi", "Arduino"],
   },
@@ -228,25 +223,29 @@ export const certifications: Certification[] = [
     name:     "Arm Cortex-M Architecture and Software Development Specialization",
     issuer:   "ARM",
     category: "embedded",
-    credUrl:  undefined, // TODO
+    credUrl:  "https://coursera.org/share/2b70bf4400139caf0dc1e243e547ed47",
+    badgeUrl : "/assets/badges/arm-cortex-m-cert.jpeg", 
   },
   {
     name:     "Embedded Software and Hardware Architecture",
     issuer:   "University of Colorado Boulder",
     category: "embedded",
-    credUrl:  undefined, // TODO
+    credUrl:  "https://coursera.org/share/74bdfb5cac26e37042af0740678a91a4",
+    badgeUrl : "/assets/badges/embedded-sw-hw-cert.jpeg", 
   },
   {
     name:     "Introduction to the Internet of Things and Embedded Systems",
     issuer:   "UC Irvine",
     category: "embedded",
-    credUrl:  undefined, // TODO
+    credUrl:  "https://coursera.org/share/f7da59fef0098f4c6378e0a4ae61f9f7",
+    badgeUrl : "/assets/badges/intro-to-iot-and-embedded-systems-cert.jpeg", 
   },
   {
     name:     "Raspberry Pi Projects Specialization",
     issuer:   "Johns Hopkins University",
     category: "embedded",
-    credUrl:  undefined, // TODO
+    credUrl:  "https://coursera.org/share/00a1e6dc49b999ca0d76552ed4f62b5e",
+    badgeUrl : "/assets/badges/rpi-projects-cert.jpeg",
   },
 
   // ── Software Engineering & Data Science ──
@@ -254,31 +253,36 @@ export const certifications: Certification[] = [
     name:     "C Programming with Linux Specialization",
     issuer:   "Dartmouth College & Institut Mines-Télécom",
     category: "software",
-    credUrl:  undefined, // TODO
+    credUrl:  "https://coursera.org/share/fbc89402fb8f13a79a5bf07d30b3fd1a",
+    badgeUrl : "/assets/badges/c-with-linux-cert.jpeg",
   },
   {
     name:     "Supervised Machine Learning: Regression and Classification",
     issuer:   "DeepLearning.AI",
     category: "software",
-    credUrl:  undefined, // TODO
+    credUrl:  "https://coursera.org/share/087b731e517463e990d1c95de3a5fd40",
+    badgeUrl : "/assets/badges/supervised-ml-regression-classification-cert.jpeg",
   },
   {
     name:     "Python for Everybody Specialization",
     issuer:   "University of Michigan",
     category: "software",
-    credUrl:  undefined, // TODO
+    credUrl:  "https://coursera.org/share/38ec03caadb9a5791d8f44d44af0721f", 
+    badgeUrl : "/assets/badges/python-for-everybody-cert.jpeg",
   },
   {
     name:     "Introduction to Git and GitHub",
     issuer:   "Google",
     category: "software",
-    credUrl:  undefined, // TODO
+    credUrl:  "https://coursera.org/share/0ebedd8a63b2a7a997b9effe571c712e",
+    badgeUrl : "/assets/badges/intro-to-git-github-cert.jpeg",
   },
   {
     name:     "PEC Generative AI Training (Cohort-2)",
     issuer:   "Pakistan Engineering Council",
     category: "software",
-    credUrl:  undefined, // TODO
+    credUrl:  "https://quiz.ideagist.com/ideagist-certificate?cert_hash=6e4c542fe9563bff",
+    badgeUrl : "/assets/badges/gen-ai-cert.jpg",
   },
 
   // ── Professional Development ──
@@ -286,25 +290,29 @@ export const certifications: Certification[] = [
     name:     "AI For Everyone",
     issuer:   "DeepLearning.AI",
     category: "professional",
-    credUrl:  undefined, // TODO
+    credUrl:  "https://coursera.org/share/aabc21cff45f076f56c05ad95bba427b",
+    badgeUrl : "/assets/badges/ai-for-everyone-cert.jpeg",
   },
   {
     name:     "What is Data Science?",
     issuer:   "IBM",
     category: "professional",
-    credUrl:  undefined, // TODO
+    credUrl:  "https://coursera.org/share/5cdf224083a1f82b01f5053452c25c24",
+    badgeUrl : "/assets/badges/what-is-data-science-cert.jpeg",
   },
   {
     name:     "Foundations: Data, Data, Everywhere",
     issuer:   "Google",
     category: "professional",
-    credUrl:  undefined, // TODO
+    credUrl:  "https://coursera.org/share/f043140975ce31c2e54b9f573ad75e51",
+    badgeUrl : "/assets/badges/foundation--data-everywhere-cert.jpeg",
   },
   {
     name:     "Get Started with Presentation Applications: PowerPoint",
     issuer:   "SkillUp",
     category: "professional",
-    credUrl:  undefined, // TODO
+    credUrl:  "https://coursera.org/share/584d23f7893d7d5954338f4e67eb1dc0",
+    badgeUrl : "/assets/badges/get-started-with-presentation-skills-cert.jpeg",
   },
 ];
 
