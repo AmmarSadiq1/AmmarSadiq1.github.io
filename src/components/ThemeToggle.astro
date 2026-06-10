@@ -1,17 +1,20 @@
 ---
-// ThemeToggle — client:load island
+// ThemeToggle — rendered potentially multiple times (desktop + mobile nav)
+// Uses a data attribute + scoped class instead of a global ID to avoid conflicts
+import { randomUUID } from 'node:crypto';
+const uid = randomUUID().slice(0, 8);
 ---
 
 <button
-  id="theme-toggle"
+  data-theme-toggle={uid}
   aria-label="Toggle light/dark mode"
-  class="relative p-2 rounded-md transition-colors duration-150"
+  class="theme-toggle-btn relative p-2 rounded-md transition-colors duration-150"
   style="color: var(--text-muted);"
   type="button"
 >
   <!-- Sun icon (shown in dark mode — clicking switches to light) -->
   <svg
-    id="icon-sun"
+    data-icon-sun={uid}
     xmlns="http://www.w3.org/2000/svg"
     width="20"
     height="20"
@@ -37,7 +40,7 @@
 
   <!-- Moon icon (shown in light mode — clicking switches to dark) -->
   <svg
-    id="icon-moon"
+    data-icon-moon={uid}
     xmlns="http://www.w3.org/2000/svg"
     width="20"
     height="20"
@@ -55,32 +58,32 @@
 </button>
 
 <script>
-  function initThemeToggle() {
-    const btn = document.getElementById('theme-toggle');
-    const iconSun = document.getElementById('icon-sun');
-    const iconMoon = document.getElementById('icon-moon');
-    if (!btn || !iconSun || !iconMoon) return;
-
-    function updateIcons() {
+  function initAllThemeToggles() {
+    // Sync all icon pairs to current theme
+    function syncIcons() {
       const isLight = document.documentElement.classList.contains('light');
-      // In light mode: show moon (to switch back to dark)
-      // In dark mode: show sun (to switch to light)
-      iconSun.style.opacity = isLight ? '0' : '1';
-      iconMoon.style.opacity = isLight ? '1' : '0';
+      document.querySelectorAll<SVGElement>('[data-icon-sun]').forEach(el => {
+        el.style.opacity = isLight ? '0' : '1';
+      });
+      document.querySelectorAll<SVGElement>('[data-icon-moon]').forEach(el => {
+        el.style.opacity = isLight ? '1' : '0';
+      });
     }
 
-    updateIcons();
-
-    btn.addEventListener('click', () => {
-      const isLight = document.documentElement.classList.toggle('light');
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-      updateIcons();
+    // Attach click handlers to every toggle button (avoid re-attaching)
+    document.querySelectorAll<HTMLButtonElement>('.theme-toggle-btn').forEach(btn => {
+      if (btn.dataset.themeToggleInit) return;
+      btn.dataset.themeToggleInit = '1';
+      btn.addEventListener('click', () => {
+        const isLight = document.documentElement.classList.toggle('light');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        syncIcons();
+      });
     });
+
+    syncIcons();
   }
 
-  // Run on initial load
-  initThemeToggle();
-
-  // Also run after Astro page transitions (if any)
-  document.addEventListener('astro:page-load', initThemeToggle);
+  initAllThemeToggles();
+  document.addEventListener('astro:page-load', initAllThemeToggles);
 </script>

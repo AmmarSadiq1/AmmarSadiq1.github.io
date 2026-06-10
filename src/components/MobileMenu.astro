@@ -28,61 +28,95 @@ const { navLinks, resumeUrl } = Astro.props;
 <div
   id="mobile-menu-backdrop"
   class="fixed inset-0 z-40 hidden"
-  style="background: rgba(7,11,20,0.75);"
+  style="background: rgba(7, 11, 20, 0.80); backdrop-filter: blur(2px);"
   aria-hidden="true"
 ></div>
 
-<!-- Drawer -->
+<!-- Drawer — fully opaque background so NO page content bleeds through -->
 <nav
   id="mobile-menu-drawer"
   aria-label="Mobile navigation"
   role="dialog"
   aria-modal="true"
   class="fixed top-0 right-0 bottom-0 z-50 w-72 flex flex-col"
-  style="background: var(--bg-surface); border-left: 1px solid var(--border); transform: translateX(100%); transition: transform 0.3s ease;"
+  style="
+    background-color: var(--bg-surface);
+    border-left: 2px solid var(--accent-dim);
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.5);
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  "
 >
   <!-- Drawer header -->
-  <div class="flex items-center justify-between px-6 h-16" style="border-bottom: 1px solid var(--border);">
-    <span class="font-mono text-sm font-semibold tracking-widest uppercase" style="color: var(--accent);">Menu</span>
+  <div
+    class="flex items-center justify-between px-6 h-16 flex-shrink-0"
+    style="border-bottom: 1px solid var(--border); background-color: var(--bg-surface);"
+  >
+    <span class="font-mono text-sm font-semibold tracking-widest uppercase" style="color: var(--accent);">Navigation</span>
     <button
       id="mobile-menu-close"
       type="button"
       aria-label="Close navigation menu"
-      class="p-2 rounded-md transition-colors duration-150"
-      style="color: var(--text-muted);"
+      class="p-2 rounded-lg transition-all duration-150"
+      style="color: var(--text-muted); border: 1px solid var(--border);"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <line x1="18" y1="6" x2="6" y2="18"/>
         <line x1="6" y1="6" x2="18" y2="18"/>
       </svg>
     </button>
   </div>
 
-  <!-- Nav links -->
-  <div class="flex flex-col flex-1 px-4 py-6 gap-1">
-    {navLinks.map(link => (
+  <!-- Nav links — full-width, clearly legible tap targets -->
+  <div class="flex flex-col flex-1 overflow-y-auto px-4 py-4 gap-1" style="background-color: var(--bg-surface);">
+    {navLinks.map((link, i) => (
       <a
         href={link.href}
-        class="mobile-nav-link py-4 px-4 text-lg font-medium rounded-lg transition-colors duration-150"
-        style="color: var(--text-muted);"
+        class="mobile-nav-link group flex items-center gap-3 py-3.5 px-4 rounded-xl text-base font-semibold transition-all duration-150"
+        style="color: var(--text-primary); background-color: transparent;"
       >
+        <!-- Section number accent -->
+        <span
+          class="font-mono text-xs w-5 text-right flex-shrink-0"
+          style="color: var(--accent);"
+          aria-hidden="true"
+        >0{i + 1}</span>
+        <!-- Separator -->
+        <span class="w-px h-4 flex-shrink-0" style="background: var(--border);" aria-hidden="true"></span>
         {link.label}
       </a>
     ))}
   </div>
 
-  <!-- Download CV at the bottom -->
-  <div class="px-6 pb-8">
+  <!-- Download CV + Theme note at the bottom -->
+  <div class="px-4 pb-6 pt-2 flex flex-col gap-3 flex-shrink-0" style="border-top: 1px solid var(--border); background-color: var(--bg-surface);">
     <a
       href={resumeUrl}
       download
-      class="mobile-nav-link block w-full text-center py-3 rounded-lg text-sm font-semibold transition-all duration-150"
+      class="mobile-nav-link flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold transition-all duration-150 active:scale-95"
       style="background: var(--accent); color: var(--bg-base);"
     >
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
       Download CV
     </a>
   </div>
 </nav>
+
+<style>
+  /* Hover state for mobile nav links */
+  .mobile-nav-link:not([download]):hover {
+    background-color: var(--bg-subtle) !important;
+    color: var(--accent) !important;
+  }
+  /* Keep Download CV hover readable */
+  .mobile-nav-link[download]:hover {
+    opacity: 0.9;
+  }
+</style>
 
 <script>
   function initMobileMenu() {
@@ -97,7 +131,7 @@ const { navLinks, resumeUrl } = Astro.props;
     // Get all focusable elements inside the drawer
     function getFocusable() {
       return Array.from(
-        drawer.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])')
+        drawer.querySelectorAll<HTMLElement>('a, button, [tabindex]:not([tabindex="-1"])')
       );
     }
 
@@ -106,11 +140,8 @@ const { navLinks, resumeUrl } = Astro.props;
       backdrop.classList.remove('hidden');
       btn.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
-      // Focus first element
-      setTimeout(() => {
-        const focusable = getFocusable();
-        if (focusable.length) (focusable[0] as HTMLElement).focus();
-      }, 50);
+      // Focus close button first
+      setTimeout(() => closeBtn?.focus(), 60);
     }
 
     function closeMenu() {
@@ -120,6 +151,10 @@ const { navLinks, resumeUrl } = Astro.props;
       document.body.style.overflow = '';
       btn.focus();
     }
+
+    // Guard against double-binding on HMR
+    if ((btn as any)._menuInit) return;
+    (btn as any)._menuInit = true;
 
     btn.addEventListener('click', openMenu);
     closeBtn.addEventListener('click', closeMenu);
@@ -136,18 +171,12 @@ const { navLinks, resumeUrl } = Astro.props;
     drawer.addEventListener('keydown', (e) => {
       if (e.key !== 'Tab') return;
       const focusable = getFocusable();
-      const first = focusable[0] as HTMLElement;
-      const last = focusable[focusable.length - 1] as HTMLElement;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
       if (e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        }
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
       } else {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
+        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
     });
 
