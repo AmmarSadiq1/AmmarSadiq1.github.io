@@ -21,6 +21,7 @@
   --accent:        #4ecca3;
   --accent-dim:    #1e7a62;
   --accent-glow:   rgba(78, 204, 163, 0.15);
+  --nav-bg:        rgba(13, 19, 32, 0.5);   /* navbar frosted-glass — dark */
 
   --font-display: 'Bricolage Grotesque Variable', sans-serif;
   --font-body:    'Outfit Variable', sans-serif;
@@ -38,6 +39,7 @@ html.light {
   --accent:        #1a936f;
   --accent-dim:    #d0f0e5;
   --accent-glow:   rgba(26, 147, 111, 0.12);
+  --nav-bg:        rgba(255, 255, 255, 0.5); /* navbar frosted-glass — light */
 }
 
 @layer base {

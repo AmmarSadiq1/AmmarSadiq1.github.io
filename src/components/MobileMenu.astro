@@ -28,7 +28,7 @@ const { navLinks, resumeUrl } = Astro.props;
 <div
   id="mobile-menu-backdrop"
   class="fixed inset-0 z-40 hidden"
-  style="background: rgba(7, 11, 20, 0.80); backdrop-filter: blur(2px);"
+  style="background: var(--nav-bg); backdrop-filter: blur(2px);"
   aria-hidden="true"
 ></div>
 
@@ -38,8 +38,9 @@ const { navLinks, resumeUrl } = Astro.props;
   aria-label="Mobile navigation"
   role="dialog"
   aria-modal="true"
-  class="fixed top-0 right-0 bottom-0 z-50 w-72 flex flex-col"
+  class="fixed top-0 right-0 z-50 w-72 flex flex-col"
   style="
+    height: 100dvh;
     background-color: var(--bg-surface);
     border-left: 2px solid var(--accent-dim);
     box-shadow: -8px 0 32px rgba(0, 0, 0, 0.5);
@@ -52,7 +53,7 @@ const { navLinks, resumeUrl } = Astro.props;
     class="flex items-center justify-between px-6 h-16 flex-shrink-0"
     style="border-bottom: 1px solid var(--border); background-color: var(--bg-surface);"
   >
-    <span class="font-mono text-sm font-semibold tracking-widest uppercase" style="color: var(--accent);">Navigation</span>
+    <span class="font-mono text-sm font-semibold tracking-widest uppercase" style="color: var(--accent);">Menu</span>
     <button
       id="mobile-menu-close"
       type="button"
@@ -67,12 +68,15 @@ const { navLinks, resumeUrl } = Astro.props;
     </button>
   </div>
 
-  <!-- Nav links — full-width, clearly legible tap targets -->
-  <div class="flex flex-col flex-1 overflow-y-auto px-4 py-4 gap-1" style="background-color: var(--bg-surface);">
+  <!-- Nav links — no scroll, links spread to fill the available height -->
+  <div
+    class="flex flex-col flex-1 justify-evenly px-4 py-2"
+    style="background-color: var(--bg-surface); min-height: 0;"
+  >
     {navLinks.map((link, i) => (
       <a
         href={link.href}
-        class="mobile-nav-link group flex items-center gap-3 py-3.5 px-4 rounded-xl text-base font-semibold transition-all duration-150"
+        class="mobile-nav-link group flex items-center gap-3 py-5 px-4 rounded-xl text-base font-semibold transition-all duration-150"
         style="color: var(--text-primary); background-color: transparent;"
       >
         <!-- Section number accent -->
